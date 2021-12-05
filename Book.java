@@ -1,41 +1,39 @@
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Book {
-    private String name;
-    private String paragraph;
-    private String image;
-    private String table;
-    private ArrayList<String> paragraphList= new ArrayList<String>();
-    private ArrayList<String> imageList= new ArrayList<String>();
-    private ArrayList<String> tableList= new ArrayList<String>();
+    String title;
+    ArrayList<Author> authors;
+    ArrayList<Chapter> chapters;
 
-    public Book(String name, String paragraph, String image) {
-        this.name = name;
-        this.paragraph = paragraph;
-        this.image = image;
+
+
+    public Book(String title)
+    {
+        this.title = title;
+        authors = new ArrayList<Author>();
+        chapters = new ArrayList<Chapter>();
     }
 
-    public Book(String name) {
-        this.name = name;
+    public void addAuthor(Author a){
+        authors.add(a);
     }
 
-    public void createNewParagraph(String s) {
-        paragraphList.add(s);
+    public int createChapter(String string){
+        Chapter c1 = new Chapter(string);
+        chapters.add(c1);
+        return chapters.indexOf(c1);
     }
 
-    public void createNewImage(String s) {
-        imageList.add(s);
+    public Chapter getChapter(int index){
+        return chapters.get(index);
     }
 
-    public void createNewTable(String s) {
-        tableList.add(s);
-    }
 
     public void print() {
-       System.out.println("Name of book: " + name);
-        System.out.println("Paragraphs: " + paragraphList);
-        System.out.println("Images: " + imageList);
-        System.out.println("Tables: " + tableList);
+        System.out.println("Book: "+title +"Authors:"+ authors + "Capitol: "+chapters);
+    }
+
+    public void addContent(Section cap1) {
+        title = String.valueOf(cap1);
     }
 }
